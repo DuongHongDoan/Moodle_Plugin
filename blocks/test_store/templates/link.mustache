@@ -1,0 +1,49 @@
+<style>
+    .ncourse {
+        color: blue;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .name_test {
+        list-style-type:none;
+        padding-left: 10px;
+        display: none;
+        font-size: 14px;
+        color: blue;
+    }
+
+    .name_test.active {
+        display: block;
+    }
+</style>
+{{#data}}
+    <div class="card dashboard-card p-2 m-1" id="yui_3_18_1_1_1713180608972_73">
+        <div class="d-flex text-truncate" id="yui_3_18_1_1_1713180608972_72">
+            <div class="w-100 line-height-3  ml-2" id="yui_3_18_1_1_1713180608972_71">
+                <h5 class="ncourse" data-target="{{name_course}}">{{name_course}}</h5>
+                <ul class="name_test" id="{{name_course}}">
+                {{#name_test_list}}
+                    <li>{{name_test}}
+                        <ul class="sub_name_test" id="">
+                        {{#list_test}}
+                            <li><a href="{{href}}">{{username}}</a></li>
+                        {{/list_test}}
+                        </ul>
+                    </li>
+                {{/name_test_list}}
+                </ul>
+            </div>
+        </div>
+    </div>
+{{/data}}
+
+<script>
+  document.querySelectorAll('.ncourse').forEach(function(label) {
+    label.addEventListener('click', function() {
+      var targetId = this.getAttribute('data-target');
+      var target = document.getElementById(targetId);
+      target.classList.toggle('active');
+    });
+  });
+</script>

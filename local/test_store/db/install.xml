@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/test_store/db" VERSION="20211019" COMMENT="XMLDB file for Moodle local/test_store"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_link_pdf" COMMENT="Stores the exams's pdf link.">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="quizattemptid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key references quiz_attempt.id."/>
+        <FIELD NAME="linkpdf" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="link pdf"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="quizattemptid" TYPE="foreign" FIELDS="quizattemptid" REFTABLE="quiz_attempts" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>

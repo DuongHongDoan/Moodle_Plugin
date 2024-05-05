@@ -1,0 +1,116 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public Licensebllsdsadfasfd
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_test_store/test
+
+    This template renders the items cards of the Recently accessed items block.
+
+    Example context (json):
+    {
+        
+    }
+}}
+
+<div id="region-main-box" class="region-main">
+<section id="region-main" class="region-main-content" aria-label="Content">
+    <span class="notifications" id="user-notifications"></span>
+    <span id="maincontent"></span>
+    <div class="activity-header" data-for="page-activity-header"></div>
+    <div role="main">
+        {{#table_info}}
+        <table class="generaltable generalbox quizreviewsummary">  
+            <tbody>
+                <tr>
+                    <th class="cell" scope="row">
+                        <a href="http://localhost/moodle/user/view.php?id={{id}}&amp;course={{course}}" class="d-inline-block aabtn">
+                            <span class="userinitials size-35">{{username}}</span>
+                        </a>
+                    </th>
+                    <td class="cell">
+                        <a href="http://localhost/moodle/user/view.php?id={{id}}&amp;course={{course}}" id="action_link65f16df2696ad2" class="">
+                            {{firstname}} {{lastname}}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="cell" scope="row">Started on</th>
+                    <td class="cell">
+                        {{#userdate}} {{timestart}}, %a, %e %b %Y, %R %p  {{/userdate}}                           
+                    </td>
+                </tr>
+                <tr>
+                    <th class="cell" scope="row">State</th>
+                    <td class="cell">{{state}}</td>
+                </tr>
+                <tr>
+                    <th class="cell" scope="row">Completed on</th>
+                    <td class="cell">
+                        {{#userdate}} {{timefinish}}, %a, %e %b %Y, %R %p  {{/userdate}}    
+                    </td>
+                </tr>
+                <tr>
+                    <th class="cell" scope="row">Time taken</th>
+                    <td class="cell">{{time}} </td>
+                </tr>
+                <tr>
+                    <th class="cell" scope="row">Marks</th>
+                    <td class="cell">{{sumgradesqa}}/{{sumgradesq}}</td>
+                </tr>
+                <tr>
+                    <th class="cell" scope="row">Grade</th>
+                    <td class="cell"><b>{{rawgrade}}</b> out of {{grade}} (<b>{{percent}}</b>%)</td>
+                </tr>
+            </tbody>
+        </table>
+        {{/table_info}}
+
+        {{#content_info}}
+        <div id="question-{{questionid}}-{{cnt_question}}" class="que {{qtype}} deferredfeedback {{state}}">
+            <div class="info">
+                <h3 class="no">Question <span class="qno">{{cnt_question}}</span></h3>
+                <div class="state">{{state}}</div>
+            </div>
+            <div class="content">
+                <div class="formulation clearfix">
+                    <h4 class="accesshide">Question text</h4>
+                    <input type="hidden" name="q6:1_:sequencecheck" value="3">
+                    <div class="qtext">{{questiontext}}</div>
+                    <fieldset class="ablock no-overflow visual-scroll-x">
+                        <legend class="prompt h6 font-weight-normal sr-only">
+                            <span class="sr-only">Question 1</span> Answer
+                        </legend>
+                        <div class="answer">
+                            {{#ans}}
+                            <div class="r0">
+                                <span><i class="icon fa fa-{{icon}} {{icon_color}} fa-fw" ></i></span>
+                                <input type="radio" id="q{{questionid}}:{{cnt_question}}_answer{{dem}}" disabled="disabled" {{checked}} style="{{appearance}}">
+                                <label for="q{{questionid}}:{{cnt_question}}_answer{{dem}}" class="ml-1">{{a}}</label>
+                            </div>
+                            {{/ans}}
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        {{/content_info}}
+
+        <div style="margin: 4px; text-align: center;">
+            <button class="btn btn-secondary" onclick="document.location='{{url}}'">Tải bài thi</button>
+        </div>
+    </div>                    
+</section>
+</div>
